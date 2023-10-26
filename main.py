@@ -14,7 +14,6 @@ def get_price():
   soup = BeautifulSoup(response.content, 'lxml')
 
   price = soup.find(class_="a-offscreen")
-  print(price)
   try:
     return price.get_text()
   except AttributeError:
@@ -25,4 +24,6 @@ price = get_price()
 while price is None:
   price = get_price()
 
-print(price)
+price_without_currency = price.split('$')[1]
+price_as_float = float(price_without_currency)
+print(price_as_float)
