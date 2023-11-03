@@ -18,20 +18,22 @@ def get_price():
   price = soup.find(class_="a-offscreen")
   title = soup.find(id="productTitle")
   try:
-    return [price.get_text(), title.get_text().strip()]
+    return price.get_text()
   except AttributeError:
-    return [None, None]
+    return None
 
-price = get_price()[0]
+price = get_price()
 
 while price is None:
-  price = get_price()[0]
-  title = get_price()[1]
+  price = get_price()
 
 price_without_currency = price.split('$')[1]
 price_as_float = float(price_without_currency)
 print(price_as_float)
-print(title)
+
 
 if price_as_float < BUY_PRICE:
-  message = f''
+  message = f'The kids laptop is now {price}'
+  with smtplib.SMTP('alonzosanchez3@gmail.com', port=587) as connection:
+    connection.starttls()
+    result = connection.login('alonzosanchez.com', )
