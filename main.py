@@ -39,3 +39,5 @@ if price_as_float < BUY_PRICE:
     connection.starttls()
     result = connection.login('alonzosanchez3@gmail.com', 'knui yyfd mqlt igcb')
     connection.sendmail(from_addr='alonzosanchez3@gmail.com', to_addrs='alonzosanchez3@gmail.com', msg=f"Subject:Amazon Price Alert!\n\n{message}\n{url}".encode('utf-8'))
+
+#Project finished
